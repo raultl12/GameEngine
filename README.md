@@ -8,8 +8,6 @@ This is a game engine created by a computer engineering student
 2. make
 3. ./bin/REngine
 
-The executable file is in bin/REngine, if something goes wrong:
+The executable file is in bin/REngine, if something goes wrong, remake the project with
 
-1. make mr.proper
-2. make
-3. ./bin/REngine
+make mr.proper and make again
