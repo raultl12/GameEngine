@@ -26,6 +26,13 @@ Object::Object(float posX, float posY)
 
 Object::~Object()
 {
+	if(components.size() > 0){
+		for (int i = 0; i < this->components.size(); i++)
+		{
+			delete this->components[i];
+		}
+		
+	}
 }
 
 void Object::Update(const float* deltaTime)
