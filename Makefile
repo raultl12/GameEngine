@@ -14,11 +14,11 @@ INCLUDE = $(HOME)/include
 
 
 #Flags
-ENGINEFLAGS = -lEngine -lObject -lObjectComponent
+ENGINEFLAGS = -lEngine -lObject -lObjectComponent -lMovementComponent
 SFMLFLAGS = -lsfml-graphics -lsfml-window -lsfml-system
 
-ALLLIBS = $(LIB)/libEngine.a $(LIB)/libObject.a $(LIB)/libObjectComponent.a
-ALLINCLUDES = $(INCLUDE)/Engine.h $(INCLUDE)/Object.h $(INCLUDE)/ObjectComponent.h
+ALLLIBS = $(LIB)/libEngine.a $(LIB)/libObject.a $(LIB)/libObjectComponent.a $(LIB)/libMovementComponent.a
+ALLINCLUDES = $(INCLUDE)/Engine.h $(INCLUDE)/Object.h $(INCLUDE)/ObjectComponent.h $(INCLUDE)/MovementComponent.h
 
 #................................................
 
@@ -77,6 +77,14 @@ $(LIB)/libObjectComponent.a: $(OBJ)/ObjectComponent.o
 
 $(OBJ)/ObjectComponent.o: $(SRC)/ObjectComponent.cpp $(INCLUDE)/ObjectComponent.h
 	g++ -c -o $(OBJ)/ObjectComponent.o $(SRC)/ObjectComponent.cpp -I$(INCLUDE) -std=c++11
+
+#Class MovementComponent.h
+
+$(LIB)/libMovementComponent.a: $(OBJ)/MovementComponent.o
+	ar rvs $(LIB)/libMovementComponent.a $(OBJ)/MovementComponent.o
+
+$(OBJ)/MovementComponent.o: $(SRC)/MovementComponent.cpp $(INCLUDE)/MovementComponent.h
+	g++ -c -o $(OBJ)/MovementComponent.o $(SRC)/MovementComponent.cpp -I$(INCLUDE) -std=c++11
 
 #................................................
 #CLEANING
