@@ -3,6 +3,8 @@
 #include "Object.h"
 #include <vector>
 
+const float COOLDOWNTIME = 40.F;
+
 class Engine
 {
 private:
@@ -13,11 +15,13 @@ private:
 	float deltaTime;
 
 	std::vector<Object*> objects;
-	float spawnCoolDown;
+	float inputCoolDown;
 
 	//Functions
 	void SpawnObject();
 	void UpdateCoolDown();
+	bool CheckForKeyPressed();
+	void ManageKeys();
 
 public:
 	Engine();
