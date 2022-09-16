@@ -26,6 +26,7 @@ public:
 	//Functions
 	void updateDeltaTime();
 	void UpdateSFMLEvents();
+	void UpdateObjects();
 	void Run();
 	void Update(const float& deltaTime);
 	void Render();

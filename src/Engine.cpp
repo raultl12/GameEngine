@@ -58,6 +58,16 @@ void Engine::UpdateSFMLEvents()
 	}
 }
 
+void Engine::UpdateObjects(){
+	if(this->objects.size() > 0){
+		for (int i = 0; i < this->objects.size(); i++)
+		{
+			this->objects[i]->Update(&this->deltaTime);
+		}
+		
+	}
+}
+
 void Engine::Run()
 {
 	while (this->window->isOpen()) {
@@ -71,6 +81,7 @@ void Engine::Update(const float& deltaTime)
 	this->updateDeltaTime();
 	this->UpdateSFMLEvents();
 	this->UpdateCoolDown();
+	this->UpdateObjects();
 
 	//std::cout << this->deltaTime << "\n";
 	std::cout << this->objects.size() << "\n";
