@@ -14,11 +14,14 @@ INCLUDE = $(HOME)/include
 
 
 #Flags
-ENGINEFLAGS = -lEngine -lObject -lObjectComponent -lMovementComponent
+ENGINEFLAGS = -lEngine -lOCharacter -lObject -lMovementComponent -lObjectComponent
 SFMLFLAGS = -lsfml-graphics -lsfml-window -lsfml-system
 
-ALLLIBS = $(LIB)/libEngine.a $(LIB)/libObject.a $(LIB)/libObjectComponent.a $(LIB)/libMovementComponent.a
-ALLINCLUDES = $(INCLUDE)/Engine.h $(INCLUDE)/Object.h $(INCLUDE)/ObjectComponent.h $(INCLUDE)/MovementComponent.h
+ALLLIBS = $(LIB)/libEngine.a $(LIB)/libOCharacter.a $(LIB)/libObject.a \
+	$(LIB)/libMovementComponent.a $(LIB)/libObjectComponent.a
+
+ALLINCLUDES = $(INCLUDE)/Engine.h $(INCLUDE)/Object.h $(INCLUDE)/ObjectComponent.h \
+	$(INCLUDE)/MovementComponent.h $(INCLUDE)/OCharacter.h
 
 #................................................
 
@@ -85,6 +88,14 @@ $(LIB)/libMovementComponent.a: $(OBJ)/MovementComponent.o
 
 $(OBJ)/MovementComponent.o: $(SRC)/MovementComponent.cpp $(INCLUDE)/MovementComponent.h
 	g++ -c -o $(OBJ)/MovementComponent.o $(SRC)/MovementComponent.cpp -I$(INCLUDE) -std=c++11
+
+#Class OCharacter.h
+
+$(LIB)/libOCharacter.a: $(OBJ)/OCharacter.o
+	ar rvs $(LIB)/libOCharacter.a $(OBJ)/OCharacter.o
+
+$(OBJ)/OCharacter.o: $(SRC)/OCharacter.cpp $(INCLUDE)/OCharacter.h
+	g++ -c -o $(OBJ)/OCharacter.o $(SRC)/OCharacter.cpp -I$(INCLUDE) -std=c++11
 
 #................................................
 #CLEANING
