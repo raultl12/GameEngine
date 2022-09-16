@@ -9,10 +9,6 @@ private:
 
 protected:
 	sf::CircleShape circle;
-	std::vector<ObjectComponent*> components;
-
-	//Protected Functions
-	virtual void UpdateComponents(const float* deltaTime);
 
 public:
 	Object();
