@@ -16,7 +16,7 @@ public:
 
 	//Functions
 	virtual void Update(const float* deltaTime);
-	virtual void Render(sf::RenderTarget* target);
+	//virtual void Render(sf::RenderTarget* target);
 
 };
 
