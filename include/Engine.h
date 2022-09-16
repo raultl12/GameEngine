@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Object.h"
+#include "OCharacter.h"
 #include <vector>
 
 const float COOLDOWNTIME = 40.F;

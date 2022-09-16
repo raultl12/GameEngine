@@ -5,7 +5,7 @@ void Engine::SpawnObject()
 {
 	if (this->inputCoolDown == 0.f) {
 		this->inputCoolDown = COOLDOWNTIME;
-		this->objects.push_back(new Object(sf::Mouse::getPosition(*this->window).x,
+		this->objects.push_back(new OCharacter(sf::Mouse::getPosition(*this->window).x,
 			sf::Mouse::getPosition(*this->window).y));
 	}
 }
@@ -37,14 +37,16 @@ bool Engine::CheckForKeyPressed(){
 void Engine::ManageKeys(){
 	if(this->inputCoolDown == 0.f){
 		this->inputCoolDown = COOLDOWNTIME;
-		std::cout << "Key pressed\n";
+		
+		
+		
 	}
 }
 
 //Constructor
 Engine::Engine()
 {
-	this->window = new sf::RenderWindow(sf::VideoMode(800, 600), "Engine");
+	this->window = new sf::RenderWindow(sf::VideoMode(800, 600), "REngine");
 	this->inputCoolDown = 0.f;
 
 }
@@ -74,9 +76,11 @@ void Engine::UpdateSFMLEvents()
 			this->window->close();
 		}
 
-		if (!this->CheckForKeyPressed() && event.mouseButton.button == sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+		
+		if (!this->CheckForKeyPressed() && sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
 			this->SpawnObject();
 		}
+		
 
 		if(this->CheckForKeyPressed()){
 			this->ManageKeys();
