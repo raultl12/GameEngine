@@ -5,12 +5,14 @@
 
 class OCharacter : public Object{
 protected:
-
+    MovementComponent* movementComponent;
+    Transform transform;
 
 public:
     OCharacter();
     OCharacter(float posX, float posY);
-    virtual ~OCharacter();
 
     //Functions
+    void Update(const float* deltaTime);
+    void Render(const sf::RenderTarget* target);
 };

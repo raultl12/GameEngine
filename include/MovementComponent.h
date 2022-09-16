@@ -6,6 +6,7 @@
 class MovementComponent : public ObjectComponent{
 protected:
     Transform transform;
+    float speed;
 
     bool moving;
 public:
@@ -14,8 +15,8 @@ public:
     ~MovementComponent();
 
     //Functions
-    void Move(Transform* transform);
-    void Update(const float* deltaTime, Transform* transform);
+    Transform GetTransform(){return transform;}
+    void Update(const float* deltaTime);
     //void Render(sf::RenderTarget* target);
 
 

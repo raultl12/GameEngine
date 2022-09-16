@@ -2,13 +2,24 @@
 
 //Constructor
 OCharacter::OCharacter(){
-    this->components.push_back(new MovementComponent());
+    this->movementComponent = new MovementComponent(&this->transform);
 }
 
-OCharacter::OCharacter(float posx, float posY){
-    this->components.push_back(new MovementComponent());
+OCharacter::OCharacter(float posX, float posY){
+    //Object(posX, posY);
+    this->circle.setPosition(sf::Vector2f(posX, posY));
+    this->transform.position.x = posX;
+    this->transform.position.y = posY;
+    this->movementComponent = new MovementComponent(&this->transform);
 }
+
 //Destructor
-OCharacter::~OCharacter(){
-}
 //Functions
+
+void OCharacter::Update(const float* deltaTime){
+    
+    this->movementComponent->Update(deltaTime);
+    this->transform = this->movementComponent->GetTransform();
+    this->circle.setPosition(this->transform.position.x, this->transform.position.y);
+
+}
